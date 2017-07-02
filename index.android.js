@@ -5,16 +5,16 @@ import { StackNavigator } from 'react-navigation';
 export default class HomeScreen extends React.Component { 
   
   static navigationOptions = {
-   title: 'Welcome',
+   title: 'BIENVENIDO',
   }; 
 
   render() {
     const { navigate } = this.props.navigation;
     return (
       <View>
-          <Text>Hello, Chat App!</Text>
+          <Text>Cuerpo de la Página</Text>
           <Button
-          onPress={() => navigate('Chat')}
+          onPress={() => navigate('Chat', { variable: 'Mati' })}
           title="Chat"
           />
       </View>
@@ -23,13 +23,16 @@ export default class HomeScreen extends React.Component {
 }
 
 class ChatScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Chat',
-  };
+
+  static navigationOptions= ({ navigation }) => ({
+    title: `Chat con ${navigation.state.params.variable}`,
+  });
+
   render() {
+    const { params } = this.props.navigation.state
     return (
       <View>
-        <Text>Chat</Text>
+        <Text>Cuerpo de la Página</Text> 
       </View>
     );
   }
