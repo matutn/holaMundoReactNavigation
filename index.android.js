@@ -1,43 +1,17 @@
 import React, { Component } from 'react';
-import {AppRegistry, StyleSheet, Text, View, Button} from 'react-native';
-import { StackNavigator } from 'react-navigation';
+import { AppRegistry } from 'react-native';
+import { StackNavigator, TabNavigator } from 'react-navigation';
 
-export default class HomeScreen extends React.Component { 
-  
-  static navigationOptions = {
-   title: 'BIENVENIDO',
-  }; 
+/*Comento home.js ya que ahora el Home pasan a ser las distintas páginas del TabNavigator*/
+// import HomeScreen from './screens/home';
+import ChatScreen from './screens/chat';
+import RecentChatsScreen from './screens/chat_RecentChats';
+import AllContactsScreen from './screens/chat_AllContacts';
 
-  render() {
-    const { navigate } = this.props.navigation;
-    return (
-      <View>
-          <Text>Cuerpo de la Página</Text>
-          <Button
-          onPress={() => navigate('Chat', { variable: 'Mati' })}
-          title="Chat"
-          />
-      </View>
-      );
-  } 
-}
-
-class ChatScreen extends React.Component {
-
-  static navigationOptions= ({ navigation }) => ({
-    title: `Chat con ${navigation.state.params.variable}`,
-  });
-
-  render() {
-    const { params } = this.props.navigation.state
-    return (
-      <View>
-        <Text>Cuerpo de la Página</Text> 
-      </View>
-    );
-  }
-}
-
+const HomeScreen = TabNavigator({
+  RECIENTES: { screen: RecentChatsScreen },
+  CONTACTOS: { screen: AllContactsScreen },
+});
 
 const SimpleApp = StackNavigator({
   Home: { screen: HomeScreen },
