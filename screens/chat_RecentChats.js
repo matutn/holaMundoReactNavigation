@@ -9,7 +9,7 @@ export default class RecentChatsScreen extends React.Component {
     	<View>
 	    	<Text>Listado de chats recientes</Text>
 		    <Button
-		    onPress={() => navigate('Chat', { variable: 'Mati' }) }
+		    onPress={() => navigate('Chat', { variable: 'variable_Pasada', user:'Mati' }) }
 		   	title="Chat con Mati"
 		    />
 	    </View>
