@@ -7,15 +7,19 @@ export default class ChatScreen extends React.Component {
   static navigationOptions= ({ navigation }) => {
     // title: `Chat con ${navigation.state.params.variable}`,
     // headerRight: <Button title="Info" />,
+    const { navigate } = navigation;
     const {state, setParams} = navigation;
-    const isInfo = state.params.mode === 'info';
+    // const isInfo = state.params.mode === 'info';
     const {user} = state.params;
     return {
-      title: isInfo ? `${user}'s Contact Info` : `Chat with ${state.params.user}`,
+      // title: isInfo ? `${user}'s Contact Info` : `Chat with ${state.params.user}`,
+      title: `Chat with ${state.params.user}`,
       headerRight: (
         <Button
-          title={isInfo ? 'Done' : `${user}'s info`}
-          onPress={() => setParams({ mode: isInfo ? 'none' : 'info'})}
+          // title={isInfo ? 'Done' : `${user}'s info`}
+          title= {`${user}'s info`}
+          // onPress={() => setParams({ mode: isInfo ? 'none' : 'info'})}
+          onPress = { () => navigate('UserInfo') }
         />
       ),
     };
